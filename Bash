@@ -1,0 +1,7 @@
+cd "C:\Users\MACAULEY WILLIAM\OneDrive\Bureau\Site exercices"
+git init
+git add .
+git commit -m "Première version de mon site"
+git branch -M main
+git remote add origin https://github.com/Willleprogram/Exoweb.git
+git push -u origin main
