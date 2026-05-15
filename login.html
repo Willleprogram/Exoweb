@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Site d'Exercices</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Connexion à votre compte</h1>
+        <a href="index.html" class="btn btn-secondary" style="position: absolute; top: 20px; right: 20px;">Retour à l'accueil</a>
+    </header>
+    <main>
+        <div class="login-container">
+            <div id="login-section">
+                <h2>Connexion</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Nom d'utilisateur</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                </form>
+                <button id="guest-access" class="btn btn-secondary" style="margin-top: 14px;">Accéder en invité</button>
+                <div class="toggle-form">
+                    <p>Pas de compte ? <a href="#register" id="show-register">S'inscrire</a></p>
+                </div>
+            </div>
+
+            <div id="register-section" style="display: none;">
+                <h2>Inscription</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="new-username">Nom d'utilisateur</label>
+                        <input type="text" id="new-username" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+" title="Lettres, chiffres et underscores uniquement">
+                        <small class="form-help">3-20 caractères, lettres/chiffres/underscores uniquement</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">Mot de passe</label>
+                        <input type="password" id="new-password" required minlength="6" maxlength="50">
+                        <div class="password-strength" id="password-strength" style="display: none;">
+                            <div class="strength-meter">
+                                <div class="strength-bar" id="strength-bar"></div>
+                            </div>
+                            <small id="strength-text"></small>
+                        </div>
+                        <small class="form-help">Au moins 6 caractères avec une lettre et un chiffre</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirmer le mot de passe</label>
+                        <input type="password" id="confirm-password" required minlength="6" maxlength="50">
+                    </div>
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                </form>
+                <div class="toggle-form">
+                    <p>Déjà un compte ? <a href="#login" id="show-login">Se connecter</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        // Login form handling
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!username) {
+                showToast('Veuillez saisir un nom d\'utilisateur.');
+                return;
+            }
+
+            if (!password) {
+                showToast('Veuillez saisir un mot de passe.');
+                return;
+            }
+
+            if (await login(username, password)) {
+                showToast('Connexion réussie !');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            } else {
+                showToast('Nom d\'utilisateur ou mot de passe incorrect.');
+            }
+        });
+
+        // Register form handling
+        document.getElementById('register-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const username = document.getElementById('new-username').value;
+            const password = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            const result = await register(username, password, confirmPassword);
+            if (result.success) {
+                showToast('Inscription réussie ! Bienvenue ' + username);
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            } else {
+                showToast(result.error);
+            }
+        });
+
+        // Guest access handling
+        document.getElementById('guest-access').addEventListener('click', function(e) {
+            e.preventDefault();
+            loginGuest();
+            showToast('Bienvenue invité !');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 800);
+        });
+
+        // Real-time validation for register form
+        const newUsernameInput = document.getElementById('new-username');
+        const newPasswordInput = document.getElementById('new-password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+
+        function showFieldError(input, message) {
+            input.style.borderColor = '#ef4444';
+            let errorElement = input.parentElement.querySelector('.field-error');
+            if (!errorElement) {
+                errorElement = document.createElement('small');
+                errorElement.className = 'field-error';
+                errorElement.style.color = '#ef4444';
+                errorElement.style.fontSize = '0.85rem';
+                errorElement.style.marginTop = '4px';
+                errorElement.style.display = 'block';
+                input.parentElement.appendChild(errorElement);
+            }
+            errorElement.textContent = message;
+        }
+
+        function clearFieldError(input) {
+            input.style.borderColor = '#e5e7eb';
+            const errorElement = input.parentElement.querySelector('.field-error');
+            if (errorElement) {
+                errorElement.remove();
+            }
+        }
+
+        newUsernameInput.addEventListener('input', function() {
+            const error = validateUsername(this.value);
+            if (error) {
+                showFieldError(this, error);
+            } else {
+                clearFieldError(this);
+            }
+        });
+
+        newPasswordInput.addEventListener('input', function() {
+            const error = validatePassword(this.value);
+            if (error) {
+                showFieldError(this, error);
+            } else {
+                clearFieldError(this);
+            }
+
+            // Update password strength indicator
+            updatePasswordStrength(this.value);
+        });
+
+        function updatePasswordStrength(password) {
+            const strengthElement = document.getElementById('password-strength');
+            const strengthBar = document.getElementById('strength-bar');
+            const strengthText = document.getElementById('strength-text');
+
+            if (!password) {
+                strengthElement.style.display = 'none';
+                return;
+            }
+
+            strengthElement.style.display = 'block';
+            const strength = getPasswordStrength(password);
+
+            strengthBar.className = 'strength-bar';
+            if (strength <= 2) {
+                strengthBar.classList.add('strength-weak');
+                strengthText.textContent = 'Faible';
+                strengthText.style.color = '#ef4444';
+            } else if (strength <= 3) {
+                strengthBar.classList.add('strength-medium');
+                strengthText.textContent = 'Moyen';
+                strengthText.style.color = '#f59e0b';
+            } else {
+                strengthBar.classList.add('strength-strong');
+                strengthText.textContent = 'Fort';
+                strengthText.style.color = '#10b981';
+            }
+        }
+
+        confirmPasswordInput.addEventListener('input', function() {
+            const password = newPasswordInput.value;
+            if (this.value !== password) {
+                showFieldError(this, 'Les mots de passe ne correspondent pas.');
+            } else {
+                clearFieldError(this);
+            }
+        });
+
+        function showSection(sectionId) {
+            document.getElementById('login-section').style.display = sectionId === 'login-section' ? 'block' : 'none';
+            document.getElementById('register-section').style.display = sectionId === 'register-section' ? 'block' : 'none';
+        }
+
+        document.getElementById('show-register').addEventListener('click', function(e) {
+            e.preventDefault();
+            showSection('register-section');
+            window.location.hash = '#register';
+        });
+
+        document.getElementById('show-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            showSection('login-section');
+            window.location.hash = '#login';
+        });
+
+        if (window.location.hash === '#register') {
+            showSection('register-section');
+        }
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\MACAULEY WILLIAM\OneDrive\Bureau\Site exercices\login.html
