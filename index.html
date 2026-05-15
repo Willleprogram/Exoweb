@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site d'exercices scolaires</title>
+  <meta name="description" content="Exercices et ressources pour les classes de 5e, 4e et 3e.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Apprendre en s'amusant</p>
+      <h1>Bienvenue sur le site des exercices</h1>
+      <p>Retrouve des ressources et des exercices pour le collège : mathématiques, français, sciences, technologie et plus encore.</p>
+      <div class="hero-actions">
+        <a href="login.html" id="login-btn" class="btn btn-primary" style="display: none;">Connexion / Inscription</a>
+        <div id="user-info" style="display: none;">
+          <p>Connecté en tant que <span id="username-display"></span></p>
+          <button id="logout-btn" class="btn btn-secondary">Se déconnecter</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="admin-users-panel" class="admin-panel hidden">
+    <div class="admin-panel-header">
+      <h2>Utilisateurs connectés</h2>
+      <p>Liste des comptes enregistrés et dernière connexion.</p>
+    </div>
+    <div class="admin-panel-content">
+      <table>
+        <thead>
+          <tr>
+            <th>Utilisateur</th>
+            <th>Dernière connexion</th>
+            <th>Rôle</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody id="admin-user-list"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <nav class="main-nav" aria-label="Navigation principale">
+    <ul>
+      <li><a href="#classe5e">5e</a></li>
+      <li><a href="#classe4e">4e</a></li>
+      <li><a href="#classe3e">3e</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="classe5e" class="card-group">
+      <h2>Classe de 5e</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Mathématiques</h3>
+          <p>Révise les fractions, la géométrie et les nombres décimaux à niveau 5e.</p>
+          <a href="maths 5e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Français</h3>
+          <p>Conjugaison, accords et compréhension de texte pour la 5e.</p>
+          <a href="francais 5e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>SVT</h3>
+          <p>SVT, Terre et énergie : des exercices adaptés au programme de 5e.</p>
+          <a href="svt 5e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Technologie</h3>
+          <p>Objets techniques, matériaux et circuits simples pour comprendre la technologie.</p>
+          <a href="technologie 5e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Anglais</h3>
+          <p>Présent simple, questions et vocabulaire de base pour la 5e.</p>
+          <a href="anglais 5e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Histoire-Géographie</h3>
+          <p>Le Moyen Âge, la société féodale et les repères géographiques essentiels.</p>
+          <a href="histoire-geographie 5e.html">Accéder</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="classe4e" class="card-group">
+      <h2>Classe de 4e</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Mathématiques</h3>
+          <p>Pourcentages, proportions, équations et géométrie pour approfondir le programme.</p>
+          <a href="maths 4e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Français</h3>
+          <p>Conjugaison, accords doubles et rédaction pour la 4e.</p>
+          <a href="francais 4e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Anglais</h3>
+          <p>Questions, négations et vocabulaire pour maîtriser le niveau 4e.</p>
+          <a href="anglais 4e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Physique-Chimie</h3>
+          <p>Énergie, circuits et transformations de la matière pour la 4e.</p>
+          <a href="physique-chimie 4e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Histoire-Géographie</h3>
+          <p>Renaissance, grandes découvertes et géographie du monde moderne.</p>
+          <a href="histoire-geographie 4e.html">Accéder</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="classe3e" class="card-group">
+      <h2>Classe de 3e</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Mathématiques</h3>
+          <p>Fonctions, statistiques et solides pour préparer le brevet.</p>
+          <a href="maths 3e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Français</h3>
+          <p>Analyse de texte, grammaire et expression écrite du programme de 3e.</p>
+          <a href="francais 3e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Histoire-Géographie</h3>
+          <p>20e siècle, guerres mondiales et enjeux géopolitiques pour le brevet.</p>
+          <a href="histoire-geographie 3e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Anglais</h3>
+          <p>Past simple, futur et expressions utiles pour le niveau 3e.</p>
+          <a href="anglais 3e.html">Accéder</a>
+        </article>
+        <article class="card">
+          <h3>Physique-Chimie</h3>
+          <p>Lois et réactions du programme de 3e pour bien préparer les contrôles.</p>
+          <a href="physique-chimie 3e.html">Accéder</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Site d'exercices scolaires • Conçu pour les collégiens.</p>
+    <p><a href="security.html">Politique de sécurité et conseils</a></p>
+  </footer>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

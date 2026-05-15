@@ -1,0 +1,496 @@
+:root {
+  color-scheme: light;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+  background-color: #eef2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+}
+
+img {
+  max-width: 100%;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  color: white;
+}
+
+.hero .eyebrow {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 3vw, 3.6rem);
+  line-height: 1.05;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: 18px auto 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+.main-nav {
+  background: white;
+  box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+  padding: 14px 20px;
+  list-style: none;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #1d4ed8;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  background: #eff6ff;
+  outline: none;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 42px;
+}
+
+.card-group {
+  margin-top: 40px;
+}
+
+.card-group h2 {
+  margin: 0 0 16px;
+  font-size: 1.8rem;
+  color: #111827;
+}
+
+.cards {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: 22px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 46px rgba(15, 23, 42, 0.12);
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin: 0 0 18px;
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+.card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.card a:hover,
+.card a:focus-visible {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 16px 20px 26px;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.95);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 999px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+  font-size: 0.98rem;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.exercise-item {
+  margin-bottom: 18px;
+  padding: 18px 18px 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.exercise-question {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #111827;
+}
+
+.exercise-note {
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #475569;
+  opacity: 0.9;
+}
+
+.exercise-mode-selection {
+  margin-bottom: 18px;
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+}
+
+.mode-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.mode-choice span {
+  font-weight: 700;
+  color: #111827;
+}
+
+.mode-button,
+.exercise-done-btn {
+  background: white;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.mode-button.active,
+.mode-button:hover,
+.exercise-done-btn:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.exercise-done-btn {
+  margin-top: 12px;
+  display: inline-flex;
+}
+
+.admin-panel {
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 22px 24px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.admin-panel.hidden {
+  display: none;
+}
+
+.admin-panel-header h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.admin-panel-header p {
+  margin: 0;
+  color: #475569;
+}
+
+.admin-panel-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+}
+
+.admin-panel-content th,
+.admin-panel-content td {
+  border: 1px solid #e2e8f0;
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.admin-panel-content th {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.admin-panel-content tbody tr:hover {
+  background: #f8fafc;
+}
+
+.user-status-active {
+  color: #047857;
+  font-weight: 600;
+}
+
+.user-status-idle {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.user-role-creator {
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.user-role-guest {
+  color: #475569;
+  font-weight: 600;
+}
+
+.exercise-list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.exercise-list ol {
+  padding-left: 1.2rem;
+}
+
+.exercise-list button {
+  margin-top: 18px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.exercise-list button:hover {
+  background: #1d4ed8;
+}
+
+/* Login styles */
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1f2937;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.form-help {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.password-strength {
+  margin-top: 8px;
+}
+
+.strength-meter {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.strength-bar {
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  border-radius: 2px;
+}
+
+.strength-weak { background: #ef4444; width: 33%; }
+.strength-medium { background: #f59e0b; width: 66%; }
+.strength-strong { background: #10b981; width: 100%; }
+
+.btn {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  margin-top: 12px;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.toggle-form {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.toggle-form a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.toggle-form a:hover {
+  text-decoration: underline;
+}
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.exercise-list button:hover,
+.exercise-list button:focus-visible {
+  background: #1d4ed8;
+  outline: none;
+}
+
+.solutions {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 1px solid #d1d5db;
+}
+
+.solutions ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.refresh-info {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 44px 18px;
+  }
+
+  .hero p,
+  .card p {
+    font-size: 1rem;
+  }
+
+  .main-nav ul {
+    gap: 10px;
+  }
+}
