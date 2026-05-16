@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercices d'Anglais - 4e</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+    <div class="hero-content">
+      <h1>Anglais - Classe de 4e</h1>
+      <p>Révise les phrases simples, le vocabulaire et les temps verbaux de base.</p>
+    </div>
+  </header>
+
+  <main class="exercise-list">
+    <section id="exercise-section" data-grade="4e" data-subject="anglais">
+      <p id="exercise-intro">Voici quelques exercices :</p>
+      <ol id="exercise-list"></ol>
+
+      <button id="toggle-solutions">Voir les réponses</button>
+
+      <div id="solutions" class="solutions hidden">
+        <h2>Réponses</h2>
+        <ol id="solution-list"></ol>
+      </div>
+
+      <p id="refresh-info" class="refresh-info"></p>
+    </section>
+
+    <p><a href="index.html">⬅ Retour à l’accueil</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Exercices d'Anglais • 4e</p>
+  </footer>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

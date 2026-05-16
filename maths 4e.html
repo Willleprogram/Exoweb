@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercices de Mathématiques - 4e</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero" style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);">
+    <div class="hero-content">
+      <h1>Mathématiques - Classe de 4e</h1>
+      <p>Entraîne-toi sur les fractions, les proportions et les premières fonctions.</p>
+    </div>
+  </header>
+
+  <main class="exercise-list">
+    <section id="exercise-section" data-grade="4e" data-subject="maths">
+      <p id="exercise-intro">Voici quelques exercices :</p>
+      <ol id="exercise-list"></ol>
+
+      <button id="toggle-solutions">Voir les réponses</button>
+
+      <div id="solutions" class="solutions hidden">
+        <h2>Réponses</h2>
+        <ol id="solution-list"></ol>
+      </div>
+
+      <p id="refresh-info" class="refresh-info"></p>
+    </section>
+
+    <p><a href="index.html">⬅ Retour à l’accueil</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Exercices de Mathématiques • 4e</p>
+  </footer>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
